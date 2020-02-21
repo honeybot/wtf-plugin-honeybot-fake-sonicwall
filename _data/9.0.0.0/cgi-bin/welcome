@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+<title>Virtual Office</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='pragma' content='no-cache'>
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='cache-control' content='must-revalidate'>
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<!-- Windows 8.1 custom tile settings in 'Immersive' mode -->
+
+<meta name="application-name" content="VirtualOffice" />
+
+<meta name="msapplication-TileColor" content="#005D84" />
+<meta name="msapplication-square70x70logo" content="/images/logo/VirtualOffice.gif" />
+<meta name="msapplication-square150x150logo" content="/images/logo/VirtualOffice.gif" />
+<meta name="msapplication-wide310x150logo" content="/images/logo/VirtualOffice.gif" />
+<meta name="msapplication-square310x310logo" content="/images/logo/VirtualOffice.gif" />
+<!-- End Windows 8.1 custom tile settings in 'Immersive' mode -->
+
+
+<link rel="shortcut icon" href="/favicon.ico"/>
+
+<link type="text/css" href="/swl_styles.9.0.0.0-9sv.css" rel="stylesheet">
+<link href='/swl_login.9.0.0.0-9sv.css' type='text/css' rel='stylesheet'>
+<link href='/swl_header.9.0.0.0-9sv.css' type='text/css' rel='stylesheet'>
+<link href='/sma_content_overrides.9.0.0.0-9sv.css' type='text/css' rel='stylesheet'>
+<link href='/sma_login_overrides.9.0.0.0-9sv.css' type='text/css' rel='stylesheet'>
+<script src="/js/jquery.9.0.0.0-9sv.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.cookie.9.0.0.0-9sv.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.form.9.0.0.0-9sv.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.validate.9.0.0.0-9sv.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.qrcode.min.9.0.0.0-9sv.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/mainframe.9.0.0.0-9sv.js"></script>
+<script src="/js/base64.9.0.0.0-9sv.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/schemeurl.9.0.0.0-9sv.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/login.9.0.0.0-9sv.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript'>
+try {
+	if (window.opener && window != window.opener && window.opener.location.host == window.location.host) {
+		window.opener.top.location.href = location.href;
+		window.close();
+	}
+} catch (err) {
+	// This happens if the opener was not the SSL-VPN; nothing to worry about
+}
+if(window!=top) {
+	top.location.href=location.href;
+}
+</script>
+<script type='text/javascript'>
+
+	window.status = window.defaultStatus = "Virtual Office";
+
+
+	SWL_LOGIN.sonicwallSMAConnectAgentVersion = "";
+
+	$(document).ready(function () {
+
+
+
+
+
+
+
+
+
+	});
+
+function showLoginBoxFields(domainIndex)
+{
+	var f = document.Login;
+
+	if (typeof(isCAArray)!='undefined' && isCAArray[domainIndex])
+	{
+		f.username.value = "";
+		f.password.value = "";
+		f.username.disabled = true;
+		f.password.disabled = true;
+		f.action = "/cert-bin/certVerifyLogin";
+		f.verifyCert.value = 1;
+		f.loginButton.focus();
+	}
+	else
+	{
+		f.username.disabled = false;
+		f.password.disabled = false;
+		f.verifyCert.value = 0;
+		f.action = "/cgi-bin/userLogin";
+	}
+}
+
+function autoCertLogin()
+{
+	if (typeof(isCAArray)!='undefined' && isCAArray.length==1 && isCAArray[0])
+	{
+		document.Login.loginButton.click();
+	}
+}
+
+</script>
+
+
+</head>
+<body onload="autoCertLogin();">
+
+	<div id='login_box_sonicwall' >
+
+			<div id='login_box_fields'>
+
+				<noscript><font color=red>Please enable JavaScript on your browser before proceeding.</font></noscript>
+				<div id="invalid"  >
+					<div id="invalid_text"></div>
+				</div>
+				<div id='login_table'>
+					<div id='userPassFormContainer'>
+						<form name="Login" action="/cgi-bin/userLogin" method="post">
+
+							<label for='username'>Username:</label>
+							<input type='text' name='username' id='username' class='required' autocomplete='off'><br>
+
+							<label for='password'>Password:</label>
+							<input type='password' name='password' id='password' class='required' autocomplete='off'><br>
+							<label for='domain'>Domain:</label>
+ <!-- Show Domains list box by default -->
+							<select name='domain' id='domain' onchange = "showLoginBoxFields(this.selectedIndex);">
+								<option value="LocalDomain">LocalDomain</option><script> var isCAArray =new Array(); isCAArray[0] = 0;</script>
+							</select>
+
+							<div class='buttons'>
+								<input name="loginButton" id="loginButton" type="submit" value="Login" class='button' autocomplete='off'>
+							</div>
+ <!--PERSISTENT_COOKIE-->
+
+ <!--LOGIN_PENDING-->
+							<div class='processing'>
+								<img src='/images/loading_spinner.gif' alt='Processing...'> Processing...
+							</div>
+							<input type="hidden" name="state" value="login">
+							<input type="hidden" name="login" value="true">
+							<input type="hidden" name="web" value="true">
+							<input type="hidden" name="verifyCert" value="0">
+							<input type="hidden" name='portalname' value="VirtualOffice">
+						</form>
+					</div>
+					<div id='otpContainer'>
+					</div>
+					<div id='rsaContainer'>
+					</div>
+					<div id='changePwContainer'>
+					</div>
+					<div id='radiusChallengeContainer'>
+					</div>
+					<div id='pdaContainer'>
+
+					</div>
+					<div id='epcValidateContainer'>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+
+	<script type='text/javascript'>
+		showLoginBoxFields(document.Login.domain.selectedIndex);
+	</script>
+
+</body></html>

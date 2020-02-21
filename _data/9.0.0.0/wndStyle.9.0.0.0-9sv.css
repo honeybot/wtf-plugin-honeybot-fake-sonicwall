@@ -1,0 +1,327 @@
+A {
+TEXT-DECORATION:none;
+}
+
+body {
+font-family: Tahoma, Arial, Verdana, sans-serif;
+font-size: 11px;
+color: #2E2F33;
+line-height: 15px;
+}
+
+.loginError {
+font-family:arial,verdana,helvetica;
+font-size:12px;
+font-weight:bold;
+color:#ffff33;
+}
+
+.passwordBox {
+color:white;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:normal;
+background-color:#006699;
+border:white thin outset;
+}
+
+input.button {
+color:black;
+background-color:#63A7C3;
+font-family:Arial, Helvetica, sans-serif;
+font-size:10pt;
+font-weight:normal;
+padding:0;
+cursor:pointer;
+cursor:hand;
+}
+
+.redButt {
+width:190px;
+cursor:hand;
+background-color:#003366;
+font-weight:bold;
+font-family:Arial, Helvetica, sans-serif;
+font-size:10pt;
+cursor:pointer;
+color:white;
+}
+
+input.applyButton {
+width:80px;
+font-weight:bold;
+font-family:Arial, Helvetica, sans-serif;
+font-size:10pt;
+color:white;
+background-color:#3366ff;
+cursor:pointer;
+cursor:hand;
+}
+
+input.largebutton {
+background-color:#9CBACE;
+border-color:#9CBACE;
+font-family:Arial, Helvetica, sans-serif;
+font-size:10pt;
+font-weight:normal;
+padding:0;
+width:150px;
+}
+
+input.buttonBar {
+background-color:#9CBACE;
+border-color:#9CBACE;
+font-family:Arial, Helvetica, sans-serif;
+font-size:10pt;
+font-weight:normal;
+padding:0;
+width:100%;
+}
+
+.line3Dlite {
+background-color:#CEDFE7;
+}
+
+.line3Ddark {
+background-color:#999999;
+}
+
+.tabData {
+margin-left:10px;
+margin-top:10px;
+margin-right:10px;
+margin-bottom:10px;
+}
+
+.toolBar {
+BACKGROUND-COLOR:#003366;
+border:1px inset;
+}
+
+.toolBarPopup {
+BACKGROUND-COLOR:#006699;
+border:1px inset;
+}
+
+.toolBarText {
+color:White;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:14px;
+font-weight:bold;
+}
+
+.centered {
+text-align:center;
+}
+
+.listControlPopup {
+BACKGROUND-COLOR:#006699;
+border:1px inset;
+}
+
+.listItem {
+background-color:white;
+FONT-FAMILY:arial,verdana,helvetica;
+color:Black;
+font-size:12px;
+font-weight:normal;
+}
+
+.listItemContrast {
+background-color:#EFF6FD;
+FONT-FAMILY:arial,verdana,helvetica;
+color:Black;
+font-size:12px;
+font-weight:normal;
+}
+
+.listItemBold {
+background-color:white;
+FONT-FAMILY:arial,verdana,helvetica;
+color:Black;
+font-size:12px;
+font-weight:bold;
+}
+
+.listItemBoldContrast {
+background-color:#EFF6FD;
+FONT-FAMILY:arial,verdana,helvetica;
+color:Black;
+font-size:12px;
+font-weight:bold;
+}
+
+.listItemCustom {
+background-color:White;
+FONT-FAMILY:arial,verdana,helvetica;
+color:Blue;
+font-size:12px;
+font-weight:normal;
+}
+
+.label {
+font-family: Tahoma, Arial, Verdana, sans-serif;
+font-size: 11px;
+font-weight : normal;
+color: #2e2f33;
+}
+
+.labelPassword {
+color:White;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:normal;
+}
+
+.labelBold {
+color:Black;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:bold;
+}
+
+.diagBar {
+color:Black;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:normal;
+background-color:#d0f0f0;
+border:thin inset;
+}
+
+.tableKey {
+color:Black;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:bold;
+background-color:#FFFFFF;
+height:20px;
+}
+
+.allowRule {
+color:#009900;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:normal;
+}
+
+.denyRule {
+color:red;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:normal;
+}
+
+.logAlertLine {
+color:Black;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:normal;
+background-color:Yellow;
+}
+
+.nolineLabel {
+text-decoration:none;
+color:Black;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:normal;
+}
+
+.nolineLabelBold {
+text-decoration:none;
+color:Black;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:bold;
+}
+
+.labelHeading {
+color:Blue;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:normal;
+}
+
+.labelFolder {
+color:White;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:14px;
+font-weight:bold;
+}
+
+.readonly {
+background-color:#9CBACE;
+}
+
+.field {
+BACKGROUND-COLOR:silver;
+FONT-FAMILY:verdana,arial,helvetica;
+FONT-SIZE:8pt;
+}
+
+.contentList {
+BACKGROUND-COLOR:White;
+FONT-FAMILY:verdana,arial,helvetica;
+FONT-SIZE:8pt;
+}
+
+.labelCustom {
+background-color:transparent;
+FONT-FAMILY:arial,verdana,helvetica;
+color:Blue;
+font-size:12px;
+font-weight:normal;
+}
+
+.groupUnderline {
+background-color:#003366;
+}
+
+.warning {
+color:Red;
+}
+
+.labelWarning {
+color:red;
+FONT-FAMILY:verdana,arial,helvetica;
+font-size:12px;
+font-weight:normal;
+}
+
+.labelWarningBold {
+color:red;
+FONT-FAMILY:arial,verdana,helvetica;
+font-size:12px;
+font-weight:bold;
+}
+
+.statusFont {
+FONT-FAMILY:arial,verdana,helvetica;
+color:Black;
+font-size:12px;
+font-weight:normal;
+}
+
+.statusTable {
+border-left:solid #0A246A 1px;
+border-right:solid #0A246A 1px;
+border-bottom:solid #0A246A 1px;
+}
+
+.objItemSpacing {
+margin-left:4px;
+}
+
+img.imgActive {
+cursor:pointer;
+cursor:hand;
+}
+
+img.imgGray {
+cursor:default;
+}
+
+.badval {
+color:#dc0005;
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+		<meta http-equiv='pragma' content='no-cache'>
+		<meta http-equiv='cache-control' content='no-cache'>
+		<meta http-equiv='cache-control' content='must-revalidate'>
+		<title>SMA Connect Agent Install and Usage</title>
+		<link rel="stylesheet" href="/portalDefault.9.0.0.0-9sv.css" type="text/css">
+		<link rel="stylesheet" href="/sma_content_overrides.9.0.0.0-9sv.css" type="text/css">
+		<link rel="stylesheet" href="/sma_portal_overrides.9.0.0.0-9sv.css" type="text/css">
+		<style type="text/css">
+			body {
+				margin:1em;
+				text-align:left;
+			}
+			h2, h3 {
+				color:#555;
+				margin-top:25px;
+				margin-bottom:1em;
+				padding-bottom:0;
+				font-size:15px;
+				font-weight:normal;
+			}
+			h3 {
+				font-size:13px;
+			}
+			section {
+				padding-left:1em;
+			}
+			img {
+				-webkit-box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
+				-moz-box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
+				box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.5);
+				margin:20px 0;
+			}
+			#os_macintosh img {
+				-webkit-border-radius: 6px;
+				-moz-border-radius: 6px;
+				border-radius: 6px;
+			}
+		</style>
+		<script type='text/javascript'>
+			function onLoadFunc() {
+				var agent = navigator.userAgent.toLowerCase();
+				if (/windows/.test(agent)) {
+					document.getElementById("os_windows").style.display = "";
+				}
+				if (/macintosh/.test(agent)) {
+					document.getElementById("os_macintosh").style.display = "";
+				} 
+
+				var host = document.location.hostname;
+				if (document.location.port != "") {
+					host += ":" + document.location.port;
+				}
+				var downloadLink = "https://" + host + "/cgi-bin/clientdownloads";
+				document.getElementById("downloadLink").innerHTML = "<a href='" + downloadLink + "'>" + downloadLink + "</a>";
+			}
+		</script>
+	</head>
+	<body onload="onLoadFunc()">
+		<h1>SMA Connect Agent Install and Usage</h1>
+
+		<h2>Introduction</h2>
+		<section>
+			<p>
+				The SMA Connect Agent replaces the browser plug-ins to launch the native applications.
+				It can launch NetExtender, Virtual Assist, Virtual Meeting, Windows Remote Desktop Application and Citrix Remote Connection.
+				Additionally, EPC and PDA on the login page depend on the SMA Connect Agent.
+			</p>
+			<p>
+				You can download the SMA Connect agent from:
+			</p>
+			<div id="downloadLink">https://[Hostname]/cgi-bin/clientdownloads</div>
+		</section>
+
+		<!-- Windows Details -->
+		<div id="os_windows" style="display:none">
+			<h2>Install Steps</h2>
+			<section>
+				<ol>
+					<li>
+						Double click <code>SMAConnectAgent.msi</code><br />
+						<img src="/images/connect_agent_win_install.png" />
+					</li>
+					<li>If User Access Control (UAC) pops up, click <code>Yes</code> to approve the installer to do the action</li>
+					<li>If necessary, input the Administrator password to install the Connect Agent.</li>
+				</ol>
+			</section>
+
+			<h2>GUI Usage</h2>
+			<section>
+				<h3>Tray</h3>
+				<section>
+					<p>The connect agent will add an icon to the system tray if you run it manually.</p>
+					<ul>
+						<li>To access Proxy Settings, double-click the tray icon.</li>
+						<li>To access the menu, right click the tray icon</li>
+					</ul>
+				</section>
+				<h3>Proxy Settings</h3>
+				<section>
+					<p>There are four options for proxy. Choose the appropriate one for your needs. Ask your administrator if you're unsure.</p>
+					<p><img src="/images/connect_agent_win_proxy_setup.png" /></p>
+				</section>
+				<h3>Log</h3>
+				<section>
+					<p>The log will be opened by the Notepad, you can check the detail of the Connect Agent.</p>
+				</section>
+			</section>
+		</div>
+
+		<!-- Macintosh Details -->
+		<div id="os_macintosh" style="display:none">
+			<h2>Install Steps</h2>
+			<section>
+				<ol>
+					<li>
+						Double click <code>SMAConnectAgent.dmg</code> to open the install window<br />
+						<img src="/images/connect_agent_mac_install.png" />
+					</li>
+					<li>Drag <code>SMAConnectAgent</code> to the <code>Applications</code> folder</li>
+				</ol>
+				<p><b>Important:</b> The Connect Agent only runs under the Applications folder.</p>
+			</section>
+
+			<h2>GUI Usage</h2>
+			<section>
+				<h3>Tray</h3> 
+				<section>
+					<p>The connect agent will add an icon to the menu bar if you run it manually. </p>
+					<ul>
+						<li>To access the menu, click the tray icon.</li>
+					</ul>
+				</section>
+				<h3>Proxy Settings</h3>
+				<section>
+					<p>There are four options for proxy. Choose the appropriate one for your needs. Ask your administrator if you're unsure.</p>
+					<p><img src="/images/connect_agent_mac_proxy_setup.png" /></p>
+				</section>
+				<h3>Log</h3>
+				<section>
+					<p>The log will be opened in the Console app.</p>
+					<p><img src="/images/connect_agent_mac_log.png" /></p>
+				</section>
+			</section>
+		</div>
+
+		<!-- Browser Details -->
+		<div id="browser_usage">
+			<h2>Browser Warning</h2>
+			<section>
+				<p>
+					The Connect Agent will be launched by some actions such as NetExtender Connection, RDP-Native Bookmark.
+					Some browsers may show an alert to confirm you want to run the Connect Agent.
+					Please click <code>Allow/OK/Launch Application</code> button to launch the Connect Agent.
+				</p>
+
+				<h3>IE warning window</h3>
+				<section><img src="/images/connect_agent_ie_warning.png" /></section>
+
+				<h3>Firefox warning window</h3>
+				<section><img src="/images/connect_agent_firefox_warning.png" /></section>
+
+				<h3>Chrome warning window</h3>
+				<section><img src="/images/connect_agent_chrome_warning.png" /></section>
+			</section>
+		</div>
+	</body>
+</html>

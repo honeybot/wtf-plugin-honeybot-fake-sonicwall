@@ -1,0 +1,362 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>
+<title>Secure Virtual Assist Login</title>
+
+<meta http-equiv='pragma' content='no-cache'>
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='cache-control' content='must-revalidate'>
+<link href="/customer_styles.9.0.0.0-9sv.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="/wndStyle.9.0.0.0-9sv.css" rel="stylesheet">
+<link type="text/css" href="/swl_styles.9.0.0.0-9sv.css" rel="stylesheet">
+<link type="text/css" href="/notificationbar.9.0.0.0-9sv.css" rel="stylesheet">
+<link type="text/css" href='/sma_content_overrides.9.0.0.0-9sv.css' rel='stylesheet'>
+<link href='/swl_header.9.0.0.0-9sv.css' type='text/css' rel='stylesheet'>
+<script src="/js/portalframe.9.0.0.0-9sv.js"></script>
+<script src="/js/toggle.9.0.0.0-9sv.js"></script>
+<script src="/js/jquery.9.0.0.0-9sv.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/jquery.cookie.9.0.0.0-9sv.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/plugintest.9.0.0.0-9sv.js"></script>
+<script src="/js/mainframe.9.0.0.0-9sv.js"></script>
+<script>
+if(window!=top) {
+    top.location.href=location.href;
+}
+
+function htmlEncode(s){
+    var str = new String(s);
+    str = str.replace(/&/g, "&amp;");
+    str = str.replace(/</g, "&lt;");
+    str = str.replace(/>/g, "&gt;");
+    str = str.replace(/\"/g, "&quot;");
+    return str;
+}
+
+function fixedCharCodeAt(str, idx) 
+{
+    idx = idx || 0;
+    var code = str.charCodeAt(idx);
+    var hi, low;
+    if (0xD800 <= code && code <= 0xDBFF) { 
+        // High surrogate (could change last hex to 0xDB7F to treat high private surrogates as single characters)
+        hi = code;
+        low = str.charCodeAt(idx + 1);
+        return ((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000;
+    }
+    if (0xDC00 <= code && code <= 0xDFFF) { 
+        // Low surrogate
+        // We return false to allow loops to skip this iteration since should have already handled high surrogate above in the previous iteration
+        return false;
+    }
+    return code;
+}
+
+function countUtf8(str) 
+{
+    var result = 0;
+    for (var n = 0; n < str.length; n++) {
+       var charCode = fixedCharCodeAt(str, n);
+       if (typeof charCode === "number") {
+           if (charCode < 128) {
+               result = result + 1;
+           } else if (charCode < 2048) {
+               result = result + 2;
+           } else if (charCode < 65536) {
+               result = result + 3;
+           } else if (charCode < 2097152) {
+               result = result + 4;
+           } else if (charCode < 67108864) {
+               result = result + 5;
+           } else {
+               result = result + 6;
+           }
+       }
+    }
+    return result;
+}
+
+//not allowed in customer's identifier
+var invalidChars = "~!#$%^&*()_+=-[]\\}{'\";:?><,/><|";
+function onSubmitLogin() 
+{
+    return true;
+}
+
+$(document).ready(function()
+{
+    $('#loginForm').hide();
+  
+    var agent = navigator.userAgent.toLowerCase();
+    if ((/windows/.test(agent) || /macintosh/.test(agent)) && !(/phone/.test(agent)) && !(/mobile/.test(agent))) {
+       var noteServiceDownlaod = $.cookie('connectAgentInstalled');
+        if (noteServiceDownlaod != 'YES') {
+            $('#connectAgentInstallWarning').show();
+        } 
+    }   
+});
+
+var loginMsg = "";
+
+var ATInterval;
+
+function showLogin()
+{
+    $('#webLink').hide();
+    $('#activeTechDivId').hide();
+    $('#activeTechGuideDivId').hide();
+    $('#loginForm').show();
+    $('#expendid').show();
+
+    clearInterval(ATInterval);
+
+    document.Login.supportuser.focus();
+}
+
+function onLoadFunc()
+{
+    //2015-11-02, Paul: Remove the Firefox and Chrome load plugin functions
+
+}
+
+function downloadWindowsClient()
+{
+    window.open("/cgi-bin/clientdownloads", "Client Downloads", "width=750,height=650,toolbar=no,menubar=no,location=no,resizable");
+}
+
+/*
+ 2015-11-02, Paul: Remove useless function findObj(theObj, theDoc)
+*/
+
+function connectAgentNotificationWarningClose() {
+    $('#connectAgentInstallWarning').hide();
+}
+
+
+function connectAgentDownload() {
+    window.open("/cgi-bin/clientdownloads", "Client Downloads", "width=750,height=650,toolbar=no,menubar=no,location=no,resizable");
+}
+
+function connectAgentInstalled() {
+    $('#connectAgentInstallWarning').hide();
+    $.cookie('connectAgentInstalled', 'YES', { path: '/cgi-bin', expires: 1080, secure: true });
+}
+
+</script>
+
+<style type='text/css'>
+    td.header_logo div { background: url(/images/logo/VirtualOffice.gif) no-repeat left center; }
+</style>
+ <!-- customPortalLogo -->
+
+
+<style>
+    #custom-logo {
+        background: url('/images/logo/VirtualOffice.gif') no-repeat left center;
+        width: 146px;
+        height: 67px;
+    }
+</style>
+<!-- LIGHT -->
+</head>
+
+
+<body bgcolor="#FFFFFF" onload="onLoadFunc()" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0">
+<!-- DEMO -->
+
+    <!-- SMA Connect Agent Download Notification Bottom Bar -->
+    <div id="connectAgentInstallWarning" class="bottom-bar-container" style="display:none">
+        <table id="bottom-bar-table">
+            <tr>
+                <td id="bottom-bar-message-td">
+                    <div class="bottom-bar-message">
+                        <p id="bottom-bar-message-p">
+                        Please download and install the SMA Connect Agent for optimal performance and experience. <a href="/connectagentdetail.html" target="_blank">[Details]</a>
+                        </p>
+                    </div>
+                </td>
+                <td id="bottom-bar-buttons-td">
+                    <div class="bottom-bar-buttons">
+                        <input id="bottom-bar-button-1" type="button" value="Installed" onclick="connectAgentInstalled()" />
+                        <input id="bottom-bar-button-2" type="button" value="Download" onclick="connectAgentDownload()" />
+                        <input id="bottom-bar-button-3" type="button" value="Not now" onclick="connectAgentNotificationWarningClose()" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div align="center">
+
+        <div class="header-container">
+            <div class="row-1">
+
+                <div id="custom-logo" class="logo"></div>
+<!-- SHOW_LOGO -->
+                <div class="product-logo-txt">Secure Virtual Assist</div>
+                <div class="sub-nav"></div>
+        </div>
+        <div class="row-2">
+            <div class="sys-left"></div>
+            <div class="sys-right"></div>
+        </div>
+    </div>
+<br />
+<!-- LIGHT -->
+  
+    <table id="mainLogin"width="710" border="0" cellspacing="0" cellpadding="3">
+        <tr>
+            <td width="20" valign="top">&nbsp;</td>
+
+            <td width=530 valign="top" align="left">         
+                <div align="left">
+                    <!-- timeline table -->
+                    <table width="500" border="0" cellspacing="0" cellpadding="2">
+                        <tr>
+                            <td width="25%">  
+                            <!-- begin request support table -->
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td bgcolor="#cbdcef" class="timeline">                      
+                                            <!-- padding table -->
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                <tr>
+                                                    <td class="timeline_on"><div align="center">Request Assistance</div></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="12"><img src="/images/timeline_blue.gif" width="13" height="20" /></td>
+                                    </tr>
+                                </table> 
+                                <!-- end request support table -->
+                            </td>
+                            <td width="25%">
+                                <div align="center">
+                                    <!-- begin wait for tech table -->
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td bgcolor="#e0e0e0" >
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                    <tr>
+                                                        <td class="timeline"><div align="center">Wait for Tech</div></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="12"><img src="/images/timeline_greyarrow.gif" width="13" height="20" /></td>
+                                        </tr>
+                                    </table>
+                                    <!-- end wait for tech table -->
+                                </div>
+                             </td>
+                            <td width="25%" class="timeline">
+                                <div align="center">
+                                    <!-- begin install table -->
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td bgcolor="#e0e0e0" >
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                    <tr>
+                                                        <td class="timeline"><div align="center">Install Software</div></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="12"><img src="/images/timeline_greyarrow.gif" width="13" height="20" /></td>
+                                        </tr>
+                                    </table>
+                                    <!-- end install table -->
+                                </div>
+                            </td>
+                            <td width="25%" class="timeline">
+                                <div align="center">
+                                    <!-- begin receive support table -->
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                        <td bgcolor="#e0e0e0" >
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="2">
+                                                <tr>
+                                                    <td class="timeline"><div align="center">Receive Assistance</div></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        </tr>
+                                    </table>
+                                    <!-- end receive support table -->
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--end timeline table -->
+                    <br />
+                    <table width="500">
+                        <tr>
+                            <td>To begin a virtual assist session with your technician, please enter your name and click the Request Assistance button. In just a few moments, there will be an established remote desktop connection between your computer and your technician.</td>
+                        </tr>
+                    </table>
+                    <br /> 
+
+                    <!-- begin form BOX table -->
+                    <div id=loginFormBox>
+                        <form name="Login" action="/cgi-bin/userLogin" method="post" onsubmit="return onSubmitLogin()">	    
+                            <input type="hidden" name=state value="login">
+                            <input type="hidden" name="guestLogin" value="support">
+                            <input type="hidden" name="portalname" value="[4A11p0ta1]">
+                            <!-- begin deprecate warning -->
+                            <div id='deprecateWarning' class='noteWarning'>
+                                Web interface for Secure Virtual Assist has been deprecated, please use Stand Alone Client to request support.
+                            </div>
+                            <br>
+                            <!-- end deprecate warning -->
+                            <table width="500" border="0" cellspacing="0" cellpadding="1">
+                                <tr>
+                                    <td bgcolor="#d3d5db">
+                                        <table width="100%" border="0" cellpadding="10" cellspacing="0" bgcolor="#f3f5f8">
+                                            <!-- 2015-11-02 Paul: Remove the download Chrome Browser plugin message, the plugin cannot work on Chrome 42+ -->
+                                            <tr>
+                                                <td class="loginError"><font color="red"></font></td>
+                                            </tr>
+		   
+                                            <tr>
+                                                <td class="loginError"><font color="red">Virtual Assist only supported on Windows, Linux and Macintosh platforms.  Your system can not be supported.</font></td>
+                                            </tr>
+<!-- OSWARNING -->
+
+                                            <tr>
+                                                <td>
+<!-- OS_WARNING -->
+
+                                                    <br/>                                   
+                                                    <!-- </div> -->
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div> <!-- loginFormbox -->
+                    <!-- end form BOX table -->
+                </div>
+            </td>
+        </tr>
+    </table> 
+    <!-- mainLogin -->
+
+    Not looking for assistance?  Login through the <a href='/cgi-bin/welcome?userLogin=true'>User Login</a> page.
+    <br />
+    <br />
+    <img src="/images/dark.gif" height="1" width="710" />
+    <br />
+
+    <table width="710" border="0" cellspacing="0" cellpadding="10">
+        <tr>
+            <td class="footer" width="100%"><div align="center"><font style="font-family: arial; font-size: 11px">&copy; 2018 SonicWall Inc.</font></div></td>
+        </tr>
+    </table>
+
+    <br />
+    <br />
+    </div>
+    <!-- 2015-11-02, Paul: Remove IE Browser load the plugin HTML code -->
+</body>
+</html>

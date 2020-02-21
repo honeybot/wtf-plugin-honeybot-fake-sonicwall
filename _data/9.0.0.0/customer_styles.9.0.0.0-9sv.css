@@ -1,0 +1,197 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+
+body, td, p{
+	font-family:  Arial, Tahoma, sans-serif;
+	font-size: 12px;
+	line-height: 17px;
+	color: #333333;
+}
+
+a {
+	color: #003399;
+	text-decoration: none;
+}
+
+br {
+	clear: both;
+}
+
+a:hover {
+	color: #0066CC;
+	text-decoration: underline;
+}
+
+
+
+#header {
+	height: 58px;
+	width: 710px;
+	border-top-width: thin;
+	border-right-width: thin;
+	border-bottom-width: thin;
+	border-left-width: thin;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-bottom-color: #999999;
+	float: left;
+}
+#header_text_box {
+	text-align: left;
+	height: 35px;
+	width: 320px;
+	float: left;
+	margin-top: 15px;
+}
+
+td.header_logo {
+	width: 155px;
+	height: 68px;
+	padding: 0 20px;
+}
+td.header_logo div {
+	width: 155px;
+	height: 68px;
+}
+
+.header_text {
+	font-family: arial,verdana,helvetica,sans-serif;
+	font-size: 24px;
+	line-height: 1em;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+#logo {
+	float: left;
+	width: 130px;
+}
+.footer {
+	font-size: 10px;
+	color: #666666;
+}
+.black {
+	color: #000000;
+}
+.left_side_text {
+	font-size: 11px;
+	line-height: 14px;
+}
+.thankyou {
+	font-size: 16px;
+	color: #000000;
+}
+.timeline {
+	font-size: 11px;
+	color: #666666;
+}
+.timeline_on {
+	font-size: 11px;
+	color: #000000;
+}
+
+tr.light {
+	background: #f5f5f5 url('/images/header_main_back_light');
+	color: #333;
+}
+
+tr.dark {
+	background: #091a57 url('/images/header_main_back.gif');
+	color: #fff;
+}
+
+tr.dark td {
+	color: #fff;
+}
+
+.vaClientDownloadButton {
+	background-image: url(/images/va_download_button.gif);
+	background-repeat: no-repeat;
+	width: 237px;
+	height: 47px;
+	padding: 15px 20px 20px 90px;
+	font-weight: bold;
+	color: #3b609a;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.vaClientDownloadButton:hover {
+	text-decoration: none;
+}
+
+.vaClientDownloadHeader {
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.vaClientDownloadCaption {
+	font-size: 14px;
+	line-height: 18px;
+}
+
+.vmClientDownloadButton {
+	background-image: url(/images/vm_download_button.gif);
+	background-repeat: no-repeat;
+	width: 300px;
+	height: 47px;
+	padding: 15px 20px 20px 90px;
+	font-weight: bold;
+	color: #3b609a;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.vmClientDownloadButton:hover {
+	text-decoration: none;
+}
+
+
+.vmClientDownloadHeader {
+	font-size: 20px;
+	line-height: 26px;
+}
+
+.vmClientDownloadCaption {
+	font-size: 16px;
+	line-height: 18px;
+}
+
+.vmTipsTextCaption {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.textLeft { 
+	width: 250px; 
+	text-align: center;
+}
+
+.textCenter {
+	text-align: center;
+	clear: both;
+}
+
+.imgRight { 
+	float:right; 
+	vertical-align: top;
+	text-align: center;
+}
+.customer_content {
+	width: 500px;
+}
+.customer_content_box {
+	width: 490px;
+	border: 1px solid #d3d5db;
+	background-color: #f3f5f8;
+	padding: 5px;
+}
+.customer_footer {
+	color: #666666;
+	font-size: 10px;
+}

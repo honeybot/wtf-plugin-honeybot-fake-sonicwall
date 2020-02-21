@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+<meta http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+body {
+	font:13px Tahoma,Arial,Verdana,Geneva,"MS Sans Serif",sans-serif;
+	background:#005D84;
+	height:100%;
+}
+h1 {
+	color:#005D84;
+	font-size:16px;
+	font-weight:normal;
+	line-height:1.2em;
+	padding-bottom:0.5em;
+	margin-top:0;
+}
+#main {
+	background-color:#fff;
+	color:#000;
+	border:10px solid #fff;
+	border-radius:20px;
+		-moz-border-radius:20px;
+		-webkit-border-radius:20px;
+	margin:12% auto 0;
+	width:710px;
+	background-image:none;
+	padding:18px;
+	text-align:center;
+}
+button,
+input[type=button] {
+	border:1px solid #ccc;
+	padding:3px 20px;
+	font-size:13px;
+	background:#eff0f4; /* Old browsers */
+	background:-moz-linear-gradient(top,  #ffffff 0%, #ffffff 35%, #f8f9f9 45%, #e9ebed 60%, #e3e5e7 70%, #e3e5e7 100%); /* FF3.6-15 */
+	background:-webkit-linear-gradient(top,  #ffffff 0%,#ffffff 35%,#f8f9f9 45%,#e9ebed 60%,#e3e5e7 70%,#e3e5e7 100%); /* Chrome10-25,Safari5.1-6 */
+	background:linear-gradient(to bottom,  #ffffff 0%,#ffffff 35%,#f8f9f9 45%,#e9ebed 60%,#e3e5e7 70%,#e3e5e7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e3e5e7',GradientType=0 ); /* IE6-9 */
+}
+
+</style>
+</head>
+
+<!-- dynamic content follows -->
+
+<head><title>Web Site Blocked</title></head>
+<body>
+<div id='main'>
+<h1>This request is blocked by SonicWall&#39;s Web Application Firewall</h1>
+
+<!-- Examples -->
+<p>URI: </p>
+<p>Threat Name: </p>
+<!-- <p>Threat ID: </p> -->
+<!-- <p>Threat Category: </p> -->
+<input type="button" id="Go Back" name="Go Back" value="Go Back" onclick="history.back();">
+</div>
+</body>
+</html><script> if((typeof error) == 'function') error("Update Failed."); </script><script> var h = window.history; var hide = 0; var ieFlg = (navigator.appName == 'Microsoft Internet Explorer'); if((ieFlg) && (h.length < 1)) { hide = 1;} else if((!ieFlg) && (h.length < 2)) { hide = 1;} if(hide) {  var backBtn = document.getElementById('Go Back');  if(backBtn != undefined) {	backBtn.style.display = 'none'; } } </script>
